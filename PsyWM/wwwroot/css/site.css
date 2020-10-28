@@ -75,12 +75,15 @@ body {
 }
 
 div.exp-canvas {
+    position: relative;
+    left: 100px;
     background-color: #303035;
     width: 800px;
     height: 600px;
 }
 
-p.exp-text {
+.exp-text {
+    display: none;
     text-align: left;
     padding: 100px;
     margin: auto;
@@ -90,10 +93,35 @@ p.exp-text {
 }
 
 .exp-cross {
+    display: none;
+    position: absolute;
+    left: 391px;
+    top: 276px;
     text-align: left;
-    padding: 100px;
-    margin: auto;
-    width: 500px;
+    color: #ffffff;
+    font-size: 28px;/*19.163 * 41.6*/
+}
+
+.square {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 28px;
+    width: 28px;
+    background-color: #ff0000;
+}
+
+.btn {
+    background-color: #0366D6;
+    color: #cedef0;
+}
+
+#dlg {
+    position: absolute;
+    text-align: left;
+    left: 300px;
+    top: 100px;
     color: #cedef0;
     font-size: 18px;
 }
