@@ -86,31 +86,33 @@
     }
 
     $("#setOK").click(function () {
-        if ($("#subjectID").val() != "") {
+        if (($("#subjectID").val() != "") && ($("#stimSet").val() == '1'|| $("#stimSet").val() == '2')) {
             subIdVal = $("#subjectID").val();
-        }
-        if ($("#stimSet").val() != "") {
             conditionVal = $("#stimSet").val();
+            //console.log('-->'+conditionVal+'<--');
+            // assign the stimulation data of each session accroding to the input
+            if (conditionVal == '1') {
+                dataS1 = set2_data;
+                dataS2 = set4_data;
+                data = [dataS1, dataS2]
+                $("#instruct").css("display", "block");
+                $("#dlg").css("display", "none");
+            } else if (conditionVal == '2') {
+                dataS1 = set4_data;
+                dataS2 = set2_data;
+                data = [dataS1, dataS2];
+                $("#instruct").css("display", "block");
+                $("#dlg").css("display", "none");
+            } else {
+                alert("here!");
+            }
+        } else {
+            alert("Wrong input! Please retry...");
         }
         //console.log('-->'+conditionVal+'<--');
         //console.log(typeof conditionVal);
 
-        // assign the stimulation data of each session accroding to the input
-        if (conditionVal == '1') {
-            dataS1 = set2_data;
-            dataS2 = set4_data;
-        } else if (conditionVal == '2') {
-            dataS1 = set4_data
-            dataS2 = set2_data
-        } else {
-            //avoid wrong input, and provide error alerts
-            dataS1 = set2_data;
-            dataS2 = set4_data;
-            alert("Wrong input! We will use the default setting to continue...");
-        }
-        data = [dataS1, dataS2]
-        $("#instruct").css("display", "block");
-        $("#dlg").css("display", "none");
+        
     });
 
     $("#next").click(function () {
@@ -119,7 +121,7 @@
     });
     $(document).keypress(function (event) {
         //console.log(event.which);
-        if ((event.which == '83' || '115') && isTimeToStart == true) {
+        if ((event.which == '83' || event.which == '115') && isTimeToStart == true) {
             $("#instruct").css("display", "none");
             $("#crossFocus").css("display", "initial");
         }
